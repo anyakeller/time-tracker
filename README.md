@@ -1,4 +1,4 @@
-# Getting Started with Fior Di Latte CRA Template
+# Time Tracker Thing
 
 This theme is built upon the create-react-app base theme
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
