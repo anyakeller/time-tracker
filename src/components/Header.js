@@ -2,8 +2,8 @@ import React from "react";
 
 function Header(props) {
   return (
-    <header>
-      <h1>Header</h1>
+    <header className="py-2 px-4 bg-secondary text-white">
+      <h1>Time Tracker</h1>
     </header>
   );
 }
