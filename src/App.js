@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="d-flex py-3 px-4 justify-content-center">
+      <div className="py-3 px-5">
         <Clock />
         <Schedule />
       </div>
