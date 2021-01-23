@@ -9,14 +9,15 @@ class CSVinput extends React.Component {
     this.fileInputLabel = React.createRef();
     // file: stores the user's file input
     // isFileValid: tracks if file is a csv
-    this.state = { file: null, isFileValid: false, data: null };
+    this.state = { file: null, isFileValid: false };
   }
 
   // helper to read the file
   handleFileRead = e => {
     const content = fileReader.result.split("\n").map(row => row.split(","));
     // console.log(content);
-    this.setState({ data: content });
+    // pass data up
+    this.props.onCSVUpload(content);
   };
 
   // handle user file upload
@@ -50,7 +51,7 @@ class CSVinput extends React.Component {
     }
   };
 
-  getForm() {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         {/* ALL FILE INPUTS ARE UNCONTROLLABLE STATE THINGS */}
@@ -80,36 +81,6 @@ class CSVinput extends React.Component {
         </button>
       </form>
     );
-  }
-
-  makeRow(rowData) {
-    return rowData.map((tableCell, index) => <td key={index}>{tableCell}</td>);
-  }
-
-  getTable() {
-    var [headers, ...tableBody] = this.state.data;
-    console.log(headers);
-    console.log(tableBody);
-    return (
-      <table className="table">
-        <thead>
-          <tr>
-            {headers.map((header, index) => (
-              <th key={index}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {tableBody.map((tableRow, index) => (
-            <tr key={index}>{this.makeRow(tableRow)}</tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  }
-
-  render() {
-    return this.state.data ? this.getTable() : this.getForm();
   }
 }
 
