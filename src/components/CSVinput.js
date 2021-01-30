@@ -9,7 +9,7 @@ class CSVinput extends React.Component {
     this.fileInputLabel = React.createRef();
     // file: stores the user's file input
     // isFileValid: tracks if file is a csv
-    this.state = { file: null, isFileValid: false };
+    this.state = { file: null, hasTriedUpload: false, isFileValid: false };
   }
 
   // helper to read the file
@@ -41,9 +41,8 @@ class CSVinput extends React.Component {
     let fileUpload = this.fileInput.current.files[0];
     if (!fileUpload) console.log("nofile");
     else {
-      this.setState({ file: fileUpload });
       if (fileUpload.type === "text/csv") {
-        this.setState({ isFileValid: true });
+        this.setState({ isFileValid: true, file: fileUpload });
       } else {
         this.setState({ isFileValid: false });
       }
@@ -60,7 +59,9 @@ class CSVinput extends React.Component {
             <input
               type="file"
               accept=".csv"
-              className="custom-file-input"
+              className={`custom-file-input ${
+                this.state.isFileValid ? "is-valid" : "is-invalid"
+              }`}
               id="csvInput"
               ref={this.fileInput}
               onChange={this.handleChange}
@@ -73,8 +74,12 @@ class CSVinput extends React.Component {
             >
               Choose file
             </label>
+            <div className="invalid-feedback">
+              Please provide a CSV file
+            </div>
           </div>
         </div>
+
         <br />
         <button className="btn btn-primary" type="submit">
           Submit
