@@ -6,7 +6,6 @@ class CSVinput extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fileInput = React.createRef();
-    this.fileInputLabel = React.createRef();
     // file: stores the user's file input
     // isFileValid: tracks if file is a csv
     this.state = { file: null, hasTriedUpload: false, isFileValid: false };
@@ -46,7 +45,6 @@ class CSVinput extends React.Component {
       } else {
         this.setState({ isFileValid: false });
       }
-      this.fileInputLabel.current.textContent = fileUpload.name;
     }
   };
 
@@ -55,35 +53,24 @@ class CSVinput extends React.Component {
       <form onSubmit={this.handleSubmit}>
         {/* ALL FILE INPUTS ARE UNCONTROLLABLE STATE THINGS */}
         <div className="input-group mb-3">
-          <div className="custom-file">
-            <input
-              type="file"
-              accept=".csv"
-              className={`custom-file-input ${
-                this.state.isFileValid ? "is-valid" : "is-invalid"
-              }`}
-              id="csvInput"
-              ref={this.fileInput}
-              onChange={this.handleChange}
-            />
-            <label
-              className="custom-file-label"
-              htmlFor="csvInput"
-              data-browse="Upload a CSV"
-              ref={this.fileInputLabel}
-            >
-              Choose file
-            </label>
-            <div className="invalid-feedback">
-              Please provide a CSV file
-            </div>
-          </div>
+          <input
+            type="file"
+            accept=".csv"
+            className={`form-control ${
+              this.state.isFileValid ? "is-valid" : "is-invalid"
+            }`}
+            id="csvInput"
+            ref={this.fileInput}
+            onChange={this.handleChange}
+          />
+          <button
+            className="btn btn-outline-secondary"
+            type="submit"
+            id="csvInputSubmit"
+          >
+            Upload
+          </button>
         </div>
-
-        <br />
-        <button className="btn btn-primary" type="submit">
-          Submit
-        </button>
       </form>
     );
   }
