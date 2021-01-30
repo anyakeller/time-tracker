@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/time-tracker/static/js/main.fbdc6884.chunk.js",
-    "main.js.map": "/time-tracker/static/js/main.fbdc6884.chunk.js.map",
+    "main.js": "/time-tracker/static/js/main.897f48bb.chunk.js",
+    "main.js.map": "/time-tracker/static/js/main.897f48bb.chunk.js.map",
     "runtime-main.js": "/time-tracker/static/js/runtime-main.df01a49e.js",
     "runtime-main.js.map": "/time-tracker/static/js/runtime-main.df01a49e.js.map",
-    "static/js/2.553cbd87.chunk.js": "/time-tracker/static/js/2.553cbd87.chunk.js",
-    "static/js/2.553cbd87.chunk.js.map": "/time-tracker/static/js/2.553cbd87.chunk.js.map",
+    "static/js/2.cac1f0ec.chunk.js": "/time-tracker/static/js/2.cac1f0ec.chunk.js",
+    "static/js/2.cac1f0ec.chunk.js.map": "/time-tracker/static/js/2.cac1f0ec.chunk.js.map",
     "index.html": "/time-tracker/index.html",
-    "static/js/2.553cbd87.chunk.js.LICENSE.txt": "/time-tracker/static/js/2.553cbd87.chunk.js.LICENSE.txt",
+    "static/js/2.cac1f0ec.chunk.js.LICENSE.txt": "/time-tracker/static/js/2.cac1f0ec.chunk.js.LICENSE.txt",
     "static/media/fiorDiLatte.9f2b5de5.png": "/time-tracker/static/media/fiorDiLatte.9f2b5de5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.df01a49e.js",
-    "static/js/2.553cbd87.chunk.js",
-    "static/js/main.fbdc6884.chunk.js"
+    "static/js/2.cac1f0ec.chunk.js",
+    "static/js/main.897f48bb.chunk.js"
   ]
 }
