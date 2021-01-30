@@ -8,7 +8,12 @@ class CSVinput extends React.Component {
     this.fileInput = React.createRef();
     // file: stores the user's file input
     // isFileValid: tracks if file is a csv
-    this.state = { file: null, hasTriedUpload: false, isFileValid: false };
+    this.state = {
+      file: null,
+      wasValidated: false,
+      hasTriedUpload: false,
+      isFileValid: false
+    };
   }
 
   // helper to read the file
@@ -41,9 +46,13 @@ class CSVinput extends React.Component {
     if (!fileUpload) console.log("nofile");
     else {
       if (fileUpload.type === "text/csv") {
-        this.setState({ isFileValid: true, file: fileUpload });
+        this.setState({
+          isFileValid: true,
+          file: fileUpload,
+          wasValidated: true
+        });
       } else {
-        this.setState({ isFileValid: false });
+        this.setState({ isFileValid: false, wasValidated: true });
       }
     }
   };
@@ -52,24 +61,47 @@ class CSVinput extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         {/* ALL FILE INPUTS ARE UNCONTROLLABLE STATE THINGS */}
-        <div className="input-group mb-3">
-          <input
-            type="file"
-            accept=".csv"
-            className={`form-control ${
-              this.state.isFileValid ? "is-valid" : "is-invalid"
-            }`}
-            id="csvInput"
-            ref={this.fileInput}
-            onChange={this.handleChange}
-          />
-          <button
-            className="btn btn-outline-secondary"
-            type="submit"
-            id="csvInputSubmit"
-          >
-            Upload
-          </button>
+        <div>
+          <label htmlFor="csvInput" className="form-label">
+            Upload your CSV file
+          </label>
+          <div className="input-group has-validation">
+            <input
+              type="file"
+              accept=".csv"
+              className={`form-control ${
+                this.state.wasValidated
+                  ? this.state.isFileValid
+                    ? "is-valid"
+                    : "is-invalid"
+                  : ""
+              }`}
+              aria-describedby="csvValidationFeedback"
+              id="csvInput"
+              ref={this.fileInput}
+              onChange={this.handleChange}
+            />
+            <button
+              className={`btn ${
+                this.state.wasValidated
+                  ? this.state.isFileValid
+                    ? "btn-outline-success"
+                    : "btn-outline-danger disabled"
+                  : "btn-outline-secondary disabled"}`}
+              type="submit"
+              id="csvInputSubmit"
+            >
+              Upload
+            </button>
+            <div
+              className={
+                this.state.isFileValid ? "valid-feedback" : "invalid-feedback"
+              }
+              id="csvValidationFeedback"
+            >
+              {this.state.isFileValid ? "good to go!" : "must be a CSV file"}
+            </div>
+          </div>
         </div>
       </form>
     );
