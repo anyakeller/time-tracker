@@ -1,6 +1,6 @@
 import React from "react";
 import CSVinput from "./CSVinput.js";
-import ScheduleTable from "./ScheduleTable.js";
+import ScheduleTable from "./scheduleTable";
 
 class Schedule extends React.Component {
   constructor(props) {
