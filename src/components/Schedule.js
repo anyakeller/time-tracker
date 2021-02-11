@@ -10,12 +10,18 @@ class Schedule extends React.Component {
   }
 
   handleCSVUpload(data) {
-    this.setState({ data: data });
+    let [headers, ...tableBody] = data;
+    localStorage.setItem("currentCSV", JSON.stringify(data));
+    this.setState({ data: [headers, tableBody] });
   }
 
   getTable() {
-    let [headers, ...tableBody] = this.state.data;
-    return <ScheduleTable headers={headers} tableBody={tableBody} />;
+    return (
+      <ScheduleTable
+        headers={this.state.data[0]}
+        tableBody={this.state.data[1]}
+      />
+    );
   }
 
   render() {
