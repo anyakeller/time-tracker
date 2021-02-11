@@ -15,21 +15,15 @@ class Schedule extends React.Component {
     this.setState({ data: [headers, tableBody] });
   }
 
-  getTable() {
-    return (
-      <ScheduleTable
-        headers={this.state.data[0]}
-        tableBody={this.state.data[1]}
-      />
-    );
-  }
-
   render() {
     return (
       <div id="schedule">
         <h1>Schedule Div</h1>
         {this.state.data ? (
-          this.getTable()
+          <ScheduleTable
+            headers={this.state.data[0]}
+            tableBody={this.state.data[1]}
+          />
         ) : (
           <CSVinput onCSVUpload={this.handleCSVUpload} />
         )}
