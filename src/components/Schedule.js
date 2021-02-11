@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header.js";
 import CSVinput from "./CSVinput.js";
 import ScheduleTable from "./scheduleTable";
 
@@ -19,15 +20,18 @@ class Schedule extends React.Component {
   render() {
     return (
       <div id="schedule">
-        <h1>Schedule Div</h1>
-        {this.state.data ? (
-          <ScheduleTable
-            headers={this.state.data[0]}
-            tableBody={this.state.data[1]}
-          />
-        ) : (
-          <CSVinput onCSVUpload={this.handleCSVUpload} />
-        )}
+        <Header />
+        <div className="container-md py2">
+          <h1>Schedule</h1>
+          {this.state.data ? (
+            <ScheduleTable
+              headers={this.state.data[0]}
+              tableBody={this.state.data[1]}
+            />
+          ) : (
+            <CSVinput onCSVUpload={this.handleCSVUpload} />
+          )}
+        </div>
       </div>
     );
   }
