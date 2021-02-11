@@ -1,5 +1,7 @@
 import React from "react";
+import EditableTr from "./EditableTr.js";
 import EditableTd from "./EditableTd.js";
+// import InputTd from "./InputTd.js";
 
 class ScheduleTable extends React.Component {
   constructor(props) {
@@ -14,6 +16,13 @@ class ScheduleTable extends React.Component {
   }
 
   makeRow(rowData) {
+    // return rowData.map((tableCell, index) => (
+    //   <InputTd
+    //     key={index}
+    //     isEditMode={this.state.isEditMode}
+    //     data={tableCell}
+    //   />
+    // ));
     return rowData.map((tableCell, index) => (
       <EditableTd
         key={index}
@@ -27,6 +36,10 @@ class ScheduleTable extends React.Component {
     this.setState({ isEditMode: !this.state.isEditMode });
   }
 
+  handleClickCancelRevert(e) {
+    console.log("cancel revert");
+  }
+
   render() {
     return (
       <div>
@@ -38,6 +51,12 @@ class ScheduleTable extends React.Component {
             ? "save changes to time tracker"
             : "edit time tracker"}
         </button>
+        <button
+          className="btn btn-warning"
+          onClick={(e) => this.handleClickCancelRevert(e)}
+        >
+          {this.state.isEditMode ? "cancel edits" : "revert to original"}
+        </button>
         <table className="table">
           <thead>
             <tr>
@@ -48,7 +67,11 @@ class ScheduleTable extends React.Component {
           </thead>
           <tbody>
             {this.state.tableBody.map((tableRow, index) => (
-              <tr key={index}>{this.makeRow(tableRow)}</tr>
+              <EditableTr
+                key={index}
+                rowData={tableRow}
+                isEditMode={this.state.isEditMode}
+              />
             ))}
             <tr>
               <td colSpan="4">asdfas</td>
