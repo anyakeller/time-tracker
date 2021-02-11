@@ -6,7 +6,7 @@ const readCSVFile = file => {
     try {
       fileReader = new FileReader();
       fileReader.onloadend = function(){
-        let rows = fileReader.result.split("\n").map(row => row.split(","));
+        let rows = fileReader.result.trim().split("\n").map(row => row.split(","));
         res(rows);
       };
       fileReader.readAsText(file);
