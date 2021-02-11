@@ -12,13 +12,13 @@ class CSVinput extends React.Component {
       file: null,
       wasValidated: false,
       hasTriedUpload: false,
-      isFileValid: false
+      isFileValid: false,
     };
   }
 
   // helper to read the file
-  handleFileRead = e => {
-    const content = fileReader.result.split("\n").map(row => row.split(","));
+  handleFileRead = (e) => {
+    const content = fileReader.result.split("\n").map((row) => row.split(","));
     // console.log(content);
     // pass data up
     this.props.onCSVUpload(content);
@@ -40,7 +40,7 @@ class CSVinput extends React.Component {
   }
 
   // handle file input change  must be arrow function
-  handleChange = e => {
+  handleChange = (e) => {
     // get the user's input
     let fileUpload = this.fileInput.current.files[0];
     if (!fileUpload) console.log("nofile");
@@ -49,7 +49,7 @@ class CSVinput extends React.Component {
         this.setState({
           isFileValid: true,
           file: fileUpload,
-          wasValidated: true
+          wasValidated: true,
         });
       } else {
         this.setState({ isFileValid: false, wasValidated: true });
@@ -87,7 +87,8 @@ class CSVinput extends React.Component {
                   ? this.state.isFileValid
                     ? "btn-outline-success"
                     : "btn-outline-danger disabled"
-                  : "btn-outline-secondary disabled"}`}
+                  : "btn-outline-secondary disabled"
+              }`}
               type="submit"
               id="csvInputSubmit"
             >
