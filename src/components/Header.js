@@ -1,9 +1,10 @@
 import React from "react";
+import Clock from "./Clock.js";
 
 function Header(props) {
   return (
-    <header className="py-2 px-4 bg-secondary text-white">
-      <h1>Time Manager Thing</h1>
+    <header className="sticky-top py-2 px-4 bg-secondary text-white">
+      <Clock />
     </header>
   );
 }

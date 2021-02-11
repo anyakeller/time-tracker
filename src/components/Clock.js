@@ -20,15 +20,14 @@ class Clock extends React.Component {
 
   tick() {
     this.setState({
-      date: new Date()
+      date: new Date(),
     });
   }
-  
+
   render() {
     return (
-      <div id="clock" className="flex-grow-1">
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      <div id="clock">
+        <h1>{this.state.date.toLocaleTimeString()}.</h1>
       </div>
     );
   }

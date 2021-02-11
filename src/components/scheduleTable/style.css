@@ -1,3 +1,8 @@
 .form-control.noEdit {
   border-color: transparent;
 }
+
+.editableTr:focus-within {
+  --bs-table-accent-bg: var(--bs-table-active-bg);
+  color: var(--bs-table-active-color);
+}

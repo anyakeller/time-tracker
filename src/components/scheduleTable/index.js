@@ -52,7 +52,7 @@ class ScheduleTable extends React.Component {
             ? "discard current changes"
             : "revert to original"}
         </button>
-        <table className="table">
+        <table className="table table-secondary">
           <thead>
             <tr>
               {this.state.headers.map((header, index) => (

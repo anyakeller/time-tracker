@@ -12,7 +12,7 @@ class EditableTr extends React.Component {
 
   render() {
     return (
-      <tr>
+      <tr className="editableTr">
         {this.state.currentRowData.map((tableCell, index) => (
           <EditableTd
             key={index}
