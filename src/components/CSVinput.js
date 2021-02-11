@@ -1,4 +1,5 @@
 import React from "react";
+import readCSVFile from "./../utils/readCSV.js";
 let fileReader;
 
 class CSVinput extends React.Component {
@@ -16,14 +17,6 @@ class CSVinput extends React.Component {
     };
   }
 
-  // helper to read the file
-  handleFileRead = (e) => {
-    const content = fileReader.result.split("\n").map((row) => row.split(","));
-    // console.log(content);
-    // pass data up
-    this.props.onCSVUpload(content);
-  };
-
   // handle user file upload
   handleSubmit(event) {
     event.preventDefault();
@@ -31,9 +24,9 @@ class CSVinput extends React.Component {
     if (this.state.isFileValid) {
       console.log("yay");
       // read the csv
-      fileReader = new FileReader();
-      fileReader.onloadend = this.handleFileRead;
-      fileReader.readAsText(this.state.file);
+      readCSVFile(this.state.file).then((rows) => {
+        this.props.onCSVUpload(rows);
+      });
     } else {
       console.log("booo");
     }

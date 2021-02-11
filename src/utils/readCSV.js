@@ -1,14 +1,19 @@
 let fileReader;
 
 // helper to read the file
-const handleFileRead = e => {
-  const content = fileReader.result;
-  console.log(content);
-  // … do something with the 'content' …
+const readCSVFile = file => {
+  return new Promise((res, rej) =>{
+    try {
+      fileReader = new FileReader();
+      fileReader.onloadend = function(){
+        let rows = fileReader.result.split("\n").map(row => row.split(","));
+        res(rows);
+      };
+      fileReader.readAsText(file);
+    } catch (err) {
+      rej(err);
+    }
+  });
 };
 
-// fileReader = new FileReader();
-// fileReader.onloadend = handleFileRead;
-// fileReader.readAsText(this.state.file);
-//
-// module.exports =
+export default readCSVFile;
