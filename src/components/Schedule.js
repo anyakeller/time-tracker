@@ -14,9 +14,7 @@ class Schedule extends React.Component {
   }
 
   getTable() {
-    var [headers, ...tableBody] = this.state.data;
-    console.log(headers);
-    console.log(tableBody);
+    let [headers, ...tableBody] = this.state.data;
     return <ScheduleTable headers={headers} tableBody={tableBody} />;
   }
 
