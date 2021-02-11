@@ -1,7 +1,7 @@
 import React from "react";
 import EditableTr from "./EditableTr.js";
 import EditableTd from "./EditableTd.js";
-// import InputTd from "./InputTd.js";
+import "./style.css";
 
 class ScheduleTable extends React.Component {
   constructor(props) {
@@ -16,13 +16,6 @@ class ScheduleTable extends React.Component {
   }
 
   makeRow(rowData) {
-    // return rowData.map((tableCell, index) => (
-    //   <InputTd
-    //     key={index}
-    //     isEditMode={this.state.isEditMode}
-    //     data={tableCell}
-    //   />
-    // ));
     return rowData.map((tableCell, index) => (
       <EditableTd
         key={index}
@@ -44,7 +37,7 @@ class ScheduleTable extends React.Component {
     return (
       <div>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary me-2"
           onClick={(e) => this.handleClickEditSave(e)}
         >
           {this.state.isEditMode
@@ -52,10 +45,12 @@ class ScheduleTable extends React.Component {
             : "edit time tracker"}
         </button>
         <button
-          className="btn btn-warning"
+          className="btn btn-danger"
           onClick={(e) => this.handleClickCancelRevert(e)}
         >
-          {this.state.isEditMode ? "cancel edits" : "revert to original"}
+          {this.state.isEditMode
+            ? "discard current changes"
+            : "revert to original"}
         </button>
         <table className="table">
           <thead>

@@ -3,7 +3,6 @@ import React from "react";
 class EditableTd extends React.Component {
   constructor(props) {
     super(props);
-    this.originalData = props.data;
     this.state = {
       currentEdit: props.data,
       currentData: props.data,
@@ -27,12 +26,17 @@ class EditableTd extends React.Component {
 
   render() {
     return (
-      <td
-        contentEditable={this.props.isEditMode}
-        onInput={(e) => this.handleInput(e)}
-        suppressContentEditableWarning={true}
-      >
-        {this.state.currentData}
+      <td>
+        <span
+          className={`form-control d-inline-block px-2 ${
+            this.props.isEditMode ? "" : "noEdit"
+          }`}
+          contentEditable={this.props.isEditMode}
+          onInput={(e) => this.handleInput(e)}
+          suppressContentEditableWarning={true}
+        >
+          {this.state.currentData}
+        </span>
       </td>
     );
   }
