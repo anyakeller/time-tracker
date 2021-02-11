@@ -1,4 +1,5 @@
 import React from "react";
+import EditableTd from "./EditableTd.js";
 
 class ScheduleTable extends React.Component {
   constructor(props) {
@@ -14,9 +15,11 @@ class ScheduleTable extends React.Component {
 
   makeRow(rowData) {
     return rowData.map((tableCell, index) => (
-      <td key={index} contentEditable={this.state.isEditMode}>
-        {tableCell}
-      </td>
+      <EditableTd
+        key={index}
+        isEditMode={this.state.isEditMode}
+        data={tableCell}
+      />
     ));
   }
 
