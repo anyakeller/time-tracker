@@ -11,6 +11,7 @@ class Schedule extends React.Component {
 
   handleCSVUpload(data) {
     let [headers, ...tableBody] = data;
+    localStorage.setItem("originalCSV", JSON.stringify(data));
     localStorage.setItem("currentCSV", JSON.stringify(data));
     this.setState({ data: [headers, tableBody] });
   }

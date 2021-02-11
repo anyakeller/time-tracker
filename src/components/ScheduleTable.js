@@ -7,6 +7,7 @@ class ScheduleTable extends React.Component {
     this.state = {
       headers: props.headers,
       tableBody: props.tableBody,
+      originalData: [props.headers, props.tableBody],
       isEditMode: false,
     };
   }
@@ -19,12 +20,16 @@ class ScheduleTable extends React.Component {
     ));
   }
 
+  handleClickEditSave(e) {
+    this.setState({ isEditMode: !this.state.isEditMode });
+  }
+
   render() {
     return (
       <div>
         <button
           className="btn btn-primary"
-          onClick={(e) => this.setState({ isEditMode: !this.state.isEditMode })}
+          onClick={(e) => this.handleClickEditSave(e)}
         >
           {this.state.isEditMode
             ? "save changes to time tracker"
