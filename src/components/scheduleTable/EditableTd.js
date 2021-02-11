@@ -3,12 +3,22 @@ import React from "react";
 class EditableTd extends React.Component {
   constructor(props) {
     super(props);
-    this.tdInput = React.createRef();
     this.originalData = props.data;
     this.state = {
       currentEdit: props.data,
       currentData: props.data,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.isEditMode !== prevProps.isEditMode) {
+      if (!this.props.isEditMode && prevProps.isEditMode) {
+        //save edits
+        this.setState({ currentData: this.state.currentEdit });
+      } else {
+        // start edit
+      }
+    }
   }
 
   handleInput(e) {
@@ -19,7 +29,6 @@ class EditableTd extends React.Component {
     return (
       <td
         contentEditable={this.props.isEditMode}
-        ref={this.tdInput}
         onInput={(e) => this.handleInput(e)}
         suppressContentEditableWarning={true}
       >
