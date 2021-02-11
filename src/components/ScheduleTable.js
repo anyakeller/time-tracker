@@ -19,13 +19,16 @@ class ScheduleTable extends React.Component {
     ));
   }
 
-  handleClickEdit(e) {}
-
   render() {
     return (
       <div>
-        <button className="btn btn-primary" onClick={this.handleClickEdit}>
-          edit time tracker
+        <button
+          className="btn btn-primary"
+          onClick={(e) => this.setState({ isEditMode: !this.state.isEditMode })}
+        >
+          {this.state.isEditMode
+            ? "save changes to time tracker"
+            : "edit time tracker"}
         </button>
         <table className="table">
           <thead>
