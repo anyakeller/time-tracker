@@ -1,26 +1,31 @@
 import React from "react";
 import Header from "./Header.js";
-import CSVinput from "./CSVinput.js";
 import ScheduleTable from "./scheduleTable";
 
 class Schedule extends React.Component {
   constructor(props) {
     super(props);
     this.handleCSVUpload = this.handleCSVUpload.bind(this);
-    this.state = { data: null };
+    this.state = { data: null, fileName: null };
   }
 
-  handleCSVUpload(data) {
-    let [headers, ...tableBody] = data;
-    localStorage.setItem("originalCSV", JSON.stringify(data));
-    localStorage.setItem("currentCSV", JSON.stringify(data));
-    this.setState({ data: [headers, tableBody] });
+  handleCSVUpload(uploadData) {
+    let [headers, ...tableBody] = uploadData.data;
+    localStorage.setItem("originalCSV", JSON.stringify(uploadData.data));
+    localStorage.setItem("currentCSV", JSON.stringify(uploadData.data));
+    this.setState({
+      data: [headers, tableBody],
+      fileName: uploadData.fileName,
+    });
   }
 
   render() {
     return (
       <div id="schedule">
-        <Header onCSVUpload={this.handleCSVUpload} />
+        <Header
+          onCSVUpload={this.handleCSVUpload}
+          fileName={this.state.fileName}
+        />
         <div className="container-md py2">
           <h1>Schedule</h1>
           {this.state.data ? (
