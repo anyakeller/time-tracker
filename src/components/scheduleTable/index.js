@@ -36,22 +36,24 @@ class ScheduleTable extends React.Component {
   render() {
     return (
       <div>
-        <button
-          className="btn btn-primary me-2"
-          onClick={(e) => this.handleClickEditSave(e)}
-        >
-          {this.state.isEditMode
-            ? "save changes to time tracker"
-            : "edit time tracker"}
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={(e) => this.handleClickCancelRevert(e)}
-        >
-          {this.state.isEditMode
-            ? "discard current changes"
-            : "revert to original"}
-        </button>
+        <div className="my-3">
+          <button
+            className="btn btn-primary me-2"
+            onClick={(e) => this.handleClickEditSave(e)}
+          >
+            {this.state.isEditMode
+              ? "save changes to time tracker"
+              : "edit time tracker"}
+          </button>
+          <button
+            className="btn btn-danger"
+            onClick={(e) => this.handleClickCancelRevert(e)}
+          >
+            {this.state.isEditMode
+              ? "discard current changes"
+              : "revert to original"}
+          </button>
+        </div>
         <table className="table table-secondary">
           <thead>
             <tr>

@@ -1,5 +1,6 @@
 .form-control.noEdit {
   border-color: transparent;
+  background-color: transparent;
 }
 
 .editableTr:focus-within {

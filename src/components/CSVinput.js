@@ -1,6 +1,5 @@
 import React from "react";
 import readCSVFile from "./../utils/readCSV.js";
-let fileReader;
 
 class CSVinput extends React.Component {
   constructor(props) {

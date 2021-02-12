@@ -20,7 +20,7 @@ class Schedule extends React.Component {
   render() {
     return (
       <div id="schedule">
-        <Header />
+        <Header onCSVUpload={this.handleCSVUpload} />
         <div className="container-md py2">
           <h1>Schedule</h1>
           {this.state.data ? (
@@ -29,7 +29,7 @@ class Schedule extends React.Component {
               tableBody={this.state.data[1]}
             />
           ) : (
-            <CSVinput onCSVUpload={this.handleCSVUpload} />
+            <h1>adsfasdf</h1>
           )}
         </div>
       </div>
