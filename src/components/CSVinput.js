@@ -10,9 +10,9 @@ class CSVinput extends React.Component {
     // isFileValid: tracks if file is a csv
     this.state = {
       file: null,
-      wasValidated: false,
-      hasTriedUpload: false,
-      isFileValid: false,
+      wasValidated: props.wasValidated ? props.wasValidated: false,
+      hasTriedUpload: props.hasTriedUpload? props.hasTriedUpload : false,
+      isFileValid: props.isFileValid? props.isFileValid: false,
     };
   }
 

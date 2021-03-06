@@ -10,9 +10,21 @@ function Header(props) {
     }
   }, [props.fileName, validFileName]);
 
+  const validFileHeader = () => {
+    return (
+      <>
+        Currently Viewing: {validFileName} <button className="btn btn-primary">Change File</button>
+      </>
+    );
+  };
+
   return (
-    <header className=" py-2 px-4 bg-light">
-      <CSVinput onCSVUpload={props.onCSVUpload} />
+    <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
+      {validFileName ? (
+        validFileHeader()
+      ) : (
+        <CSVinput onCSVUpload={props.onCSVUpload} />
+      )}
     </header>
   );
 }
