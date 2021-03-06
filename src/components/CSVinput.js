@@ -53,11 +53,11 @@ class CSVinput extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         {/* ALL FILE INPUTS ARE UNCONTROLLABLE STATE THINGS */}
-        <div>
-          <label htmlFor="csvInput" className="form-label">
+        <div className="row justify-content-between align-items-center">
+          <label htmlFor="csvInput" className="form-label col-12 col-sm-4 mb-sm-0">
             Upload your CSV file
           </label>
-          <div className="input-group has-validation">
+          <div className="input-group has-validation col-12 col-sm">
             <input
               type="file"
               accept=".csv"
@@ -84,16 +84,8 @@ class CSVinput extends React.Component {
               type="submit"
               id="csvInputSubmit"
             >
-              Upload
-            </button>
-            <div
-              className={
-                this.state.isFileValid ? "valid-feedback" : "invalid-feedback"
-              }
-              id="csvValidationFeedback"
-            >
-              {this.state.isFileValid ? "good to go!" : "must be a CSV file"}
-            </div>
+              {this.state.isFileValid ? "upload" : "Please choose a csv file"}
+            </button>      
           </div>
         </div>
       </form>

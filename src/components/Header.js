@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import CSVinput from "./CSVinput.js";
+import React, { useState, useEffect } from 'react';
+import CSVinput from './CSVinput.js';
 
 function Header(props) {
   const [validFileName, setValidFileName] = useState(null);
@@ -10,10 +10,17 @@ function Header(props) {
     }
   }, [props.fileName, validFileName]);
 
+  const handleChangeUploadClick = (e) => {
+    e.preventDefault();
+    setValidFileName(null);
+    console.log('change file clicked');
+  };
+
   const validFileHeader = () => {
     return (
       <>
-        Currently Viewing: {validFileName} <button className="btn btn-primary">Change File</button>
+        Currently Viewing: {validFileName}{' '}
+        <button onClick={handleChangeUploadClick} className="btn btn-primary">Change File</button>
       </>
     );
   };
