@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "./Header.js";
-import ScheduleTable from "./scheduleTable";
+import React from 'react';
+import Header from './Header.js';
+import ScheduleTable from './scheduleTable';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -11,11 +11,11 @@ class Schedule extends React.Component {
 
   handleCSVUpload(uploadData) {
     let [headers, ...tableBody] = uploadData.data;
-    localStorage.setItem("originalCSV", JSON.stringify(uploadData.data));
-    localStorage.setItem("currentCSV", JSON.stringify(uploadData.data));
+    localStorage.setItem('originalCSV', JSON.stringify(uploadData.data));
+    localStorage.setItem('currentCSV', JSON.stringify(uploadData.data));
     this.setState({
       data: [headers, tableBody],
-      fileName: uploadData.fileName,
+      fileName: uploadData.fileName
     });
   }
 
@@ -27,12 +27,15 @@ class Schedule extends React.Component {
           fileName={this.state.fileName}
         />
         <div className="container-md py2">
-          <h1>Schedule</h1>
-          {this.state.data ? (
-            <ScheduleTable
-              headers={this.state.data[0]}
-              tableBody={this.state.data[1]}
-            />
+          <h2>Schedule</h2>
+          {this.state.fileName && this.state.data ? (
+            <>
+              <h1>{this.state.fileName}</h1>
+              <ScheduleTable
+                headers={this.state.data[0]}
+                tableBody={this.state.data[1]}
+              />
+            </>
           ) : (
             <h1>adsfasdf</h1>
           )}
