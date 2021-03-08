@@ -1,45 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CSVinput from './CSVinput.js';
 
-function Header(props) {
-  const [validFileName, setValidFileName] = useState(props.fileName);
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      validFileName: props.fileName
+    };
+  }
 
-  useEffect(() => {
-    if (validFileName !== false && props.fileName && props.fileName !== validFileName) {
-      console.log(validFileName);
-      setValidFileName(props.fileName);
+  componentDidUpdate(prevProps) {
+    if (this.props.fileName !== prevProps.fileName) {
+      this.setState({
+        validFileName: this.props.fileName
+      });
     }
-  }, [props.fileName, validFileName]);
+  }
 
-  const handleChangeUploadClick = (e) => {
+  handleChangeUploadClick = (e) => {
     e.preventDefault();
-    setValidFileName(false);
+    this.setState({
+      validFileName: false
+    });
     console.log('change file clicked');
   };
 
-  const onCSVUpload = (uploadData) => {
-    props.onCSVUpload(uploadData);
-  }
+  onCSVUpload = (uploadData) => {
+    this.props.onCSVUpload(uploadData);
+  };
 
-  const validFileHeader = () => {
-
+  validFileHeader = () => {
     return (
       <>
-        Currently Viewing: {validFileName}{' '}
-        <button onClick={handleChangeUploadClick} className="btn btn-primary">Change File</button>
+        Currently Viewing: {this.state.validFileName}{' '}
+        <button onClick={this.handleChangeUploadClick} className="btn btn-primary">
+          Change File
+        </button>
       </>
     );
   };
 
-  return (
-    <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
-      {validFileName ? (
-        validFileHeader()
-      ) : (
-        <CSVinput onCSVUpload={onCSVUpload} />
-      )}
-    </header>
-  );
+  render() {
+    return (
+      <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
+        {this.state.validFileName ? (
+          this.validFileHeader()
+        ) : (
+          <CSVinput onCSVUpload={this.onCSVUpload} />
+        )}
+      </header>
+    );
+  }
 }
 
 export default Header;
