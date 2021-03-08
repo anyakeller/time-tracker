@@ -2,21 +2,27 @@ import React, { useState, useEffect } from 'react';
 import CSVinput from './CSVinput.js';
 
 function Header(props) {
-  const [validFileName, setValidFileName] = useState(null);
+  const [validFileName, setValidFileName] = useState(props.fileName);
 
   useEffect(() => {
-    if (props.fileName && props.fileName !== validFileName) {
+    if (validFileName !== false && props.fileName && props.fileName !== validFileName) {
+      console.log(validFileName);
       setValidFileName(props.fileName);
     }
   }, [props.fileName, validFileName]);
 
   const handleChangeUploadClick = (e) => {
     e.preventDefault();
-    setValidFileName(null);
+    setValidFileName(false);
     console.log('change file clicked');
   };
 
+  const onCSVUpload = (uploadData) => {
+    props.onCSVUpload(uploadData);
+  }
+
   const validFileHeader = () => {
+
     return (
       <>
         Currently Viewing: {validFileName}{' '}
@@ -30,7 +36,7 @@ function Header(props) {
       {validFileName ? (
         validFileHeader()
       ) : (
-        <CSVinput onCSVUpload={props.onCSVUpload} />
+        <CSVinput onCSVUpload={onCSVUpload} />
       )}
     </header>
   );

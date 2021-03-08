@@ -1,7 +1,7 @@
-import React from "react";
-import EditableTr from "./EditableTr.js";
-import EditableTd from "./EditableTd.js";
-import "./style.css";
+import React from 'react';
+import EditableTr from './EditableTr.js';
+import EditableTd from './EditableTd.js';
+import './style.css';
 
 class ScheduleTable extends React.Component {
   constructor(props) {
@@ -11,8 +11,22 @@ class ScheduleTable extends React.Component {
       headers: props.headers,
       tableBody: props.tableBody,
       originalData: [props.headers, props.tableBody],
-      isEditMode: false,
+      isEditMode: false
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.tableBody !== prevProps.tableBody) {
+      console.log("change");
+      this.setState({
+        headers: this.props.headers,
+        tableBody: this.props.tableBody,
+        originalData: [this.props.headers, this.props.tableBody],
+        isEditMode: false
+      });
+    }
+    console.log('no change');
   }
 
   makeRow(rowData) {
@@ -30,7 +44,7 @@ class ScheduleTable extends React.Component {
   }
 
   handleClickCancelRevert(e) {
-    console.log("cancel revert");
+    console.log('cancel revert');
   }
 
   render() {
@@ -39,19 +53,17 @@ class ScheduleTable extends React.Component {
         <div className="my-3">
           <button
             className="btn btn-primary me-2"
-            onClick={(e) => this.handleClickEditSave(e)}
-          >
+            onClick={(e) => this.handleClickEditSave(e)}>
             {this.state.isEditMode
-              ? "save changes to time tracker"
-              : "edit time tracker"}
+              ? 'save changes to time tracker'
+              : 'edit time tracker'}
           </button>
           <button
             className="btn btn-danger"
-            onClick={(e) => this.handleClickCancelRevert(e)}
-          >
+            onClick={(e) => this.handleClickCancelRevert(e)}>
             {this.state.isEditMode
-              ? "discard current changes"
-              : "revert to original"}
+              ? 'discard current changes'
+              : 'revert to original'}
           </button>
         </div>
         <table className="table table-secondary">
