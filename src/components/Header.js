@@ -1,56 +1,19 @@
-import React from 'react';
-import CSVinput from './CSVinput.js';
+import React from "react";
+import CSVinput from "./CSVinput";
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      validFileName: props.fileName
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.fileName !== prevProps.fileName) {
-      this.setState({
-        validFileName: this.props.fileName
-      });
-    }
-  }
-
-  handleChangeUploadClick = (e) => {
-    e.preventDefault();
-    this.setState({
-      validFileName: false
-    });
-    console.log('change file clicked');
+function Header(props) {
+  const validFileHeader = () => {
+    return <>Currently Viewing: {props.fileName} </>;
   };
-
-  onCSVUpload = (uploadData) => {
-    this.props.onCSVUpload(uploadData);
-  };
-
-  validFileHeader = () => {
-    return (
-      <>
-        Currently Viewing: {this.state.validFileName}{' '}
-        <button onClick={this.handleChangeUploadClick} className="btn btn-primary">
-          Change File
-        </button>
-      </>
-    );
-  };
-
-  render() {
-    return (
-      <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
-        {this.state.validFileName ? (
-          this.validFileHeader()
-        ) : (
-          <CSVinput onCSVUpload={this.onCSVUpload} />
-        )}
-      </header>
-    );
-  }
+  return (
+    <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
+      {props.fileName ? (
+        validFileHeader()
+      ) : (
+        <CSVinput setFile={props.setFile} />
+      )}
+    </header>
+  );
 }
 
 export default Header;

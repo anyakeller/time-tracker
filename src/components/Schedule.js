@@ -1,48 +1,37 @@
-import React from 'react';
-import Header from './Header.js';
-import ScheduleTable from './scheduleTable';
+import React from "react";
+import Header from "./Header";
+import ScheduleTable from "./scheduleTable";
+import { FileContext } from "../FileContext";
 
-class Schedule extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleCSVUpload = this.handleCSVUpload.bind(this);
-    this.state = { data: null, fileName: null };
-  }
-
-  handleCSVUpload(uploadData) {
-    let [headers, ...tableBody] = uploadData.data;
-    localStorage.setItem('originalCSV', JSON.stringify(uploadData.data));
-    localStorage.setItem('currentCSV', JSON.stringify(uploadData.data));
-    this.setState({
-      data: [headers, tableBody],
-      fileName: uploadData.fileName
-    });
-  }
-
-  render() {
-    return (
-      <div id="schedule">
-        <Header
-          onCSVUpload={this.handleCSVUpload}
-          fileName={this.state.fileName}
-        />
-        <div className="container-md py2">
-          <h2>Schedule</h2>
-          {this.state.fileName && this.state.data ? (
+function Schedule() {
+  return (
+    <div id="schedule">
+      <FileContext.Consumer>
+        {({ data, fileName, setFile }) => {
+          return (
             <>
-              <h1>{this.state.fileName}</h1>
-              <ScheduleTable
-                headers={this.state.data[0]}
-                tableBody={this.state.data[1]}
-              />
+              <Header fileName={fileName} setFile={setFile} />
+              <div className="container-md py2">
+                <h2>Schedule</h2>
+                {fileName && data ? (
+                  <>
+                    <h1>{fileName}</h1>
+                    <ScheduleTable
+                      data={data}
+                      fileName={fileName}
+                      setFile={setFile}
+                    />
+                  </>
+                ) : (
+                  <h1>adsfasdf</h1>
+                )}
+              </div>
             </>
-          ) : (
-            <h1>adsfasdf</h1>
-          )}
-        </div>
-      </div>
-    );
-  }
+          );
+        }}
+      </FileContext.Consumer>
+    </div>
+  );
 }
 
 export default Schedule;
