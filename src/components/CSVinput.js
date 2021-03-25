@@ -10,9 +10,9 @@ class CSVinput extends React.Component {
     // isFileValid: tracks if file is a csv
     this.state = {
       file: null,
-      wasValidated: props.wasValidated ? props.wasValidated: false,
-      hasTriedUpload: props.hasTriedUpload? props.hasTriedUpload : false,
-      isFileValid: props.isFileValid? props.isFileValid: false,
+      wasValidated: props.wasValidated ? props.wasValidated : false,
+      hasTriedUpload: props.hasTriedUpload ? props.hasTriedUpload : false,
+      isFileValid: props.isFileValid ? props.isFileValid : false
     };
   }
 
@@ -35,13 +35,19 @@ class CSVinput extends React.Component {
   handleChange = (e) => {
     // get the user's input
     let fileUpload = this.fileInput.current.files[0];
-    if (!fileUpload) console.log("nofile");
-    else {
+    if (!fileUpload) {
+      console.log("nofile");
+      this.setState({
+        isFileValid: false,
+        file: null,
+        wasValidated: false
+      });
+    } else {
       if (fileUpload.type === "text/csv") {
         this.setState({
           isFileValid: true,
           file: fileUpload,
-          wasValidated: true,
+          wasValidated: true
         });
       } else {
         this.setState({ isFileValid: false, wasValidated: true });
@@ -54,7 +60,9 @@ class CSVinput extends React.Component {
       <form onSubmit={this.handleSubmit}>
         {/* ALL FILE INPUTS ARE UNCONTROLLABLE STATE THINGS */}
         <div className="row justify-content-between align-items-center">
-          <label htmlFor="csvInput" className="form-label col-12 col-sm-4 mb-sm-0">
+          <label
+            htmlFor="csvInput"
+            className="form-label col-12 col-sm-4 mb-sm-0">
             Upload your CSV file
           </label>
           <div className="input-group has-validation col-12 col-sm">
@@ -82,10 +90,9 @@ class CSVinput extends React.Component {
                   : "btn-outline-secondary disabled"
               }`}
               type="submit"
-              id="csvInputSubmit"
-            >
+              id="csvInputSubmit">
               {this.state.isFileValid ? "upload" : "Please choose a csv file"}
-            </button>      
+            </button>
           </div>
         </div>
       </form>
