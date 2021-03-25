@@ -15,33 +15,6 @@ function Header(props) {
     props.setFile(stuff);
   };
 
-  const validFileHeader = () => {
-    return (
-      <>
-        Currently Viewing: {props.fileName}{" "}
-        <button
-          onClick={handleChangeUploadClick}
-          className="btn btn-primary ms-2 mt-1 mt-md-0">
-          Change File
-        </button>
-      </>
-    );
-  };
-
-  const noFileHeader = () => {
-    return (
-      <>
-        <CSVinput setFile={setFile} />
-        <button
-          className="btn btn-outline-secondary ms-2 mt-1 mt-md-0"
-          type="button"
-          onClick={handleChangeUploadClick}>
-          Cancel
-        </button>
-      </>
-    );
-  };
-
   const fileHeader = () => {
     return (
       <>
