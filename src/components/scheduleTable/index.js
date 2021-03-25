@@ -17,10 +17,10 @@ function ScheduleTable({ data, fileName }) {
           </tr>
         </thead>
         <tbody>
-          {data.tableBody.map((tableRow, index) => (
-            <tr className="editableTr">
-              {tableRow.map((tableCell, index) => (
-                <td>
+          {data.tableBody.map((tableRow, rowNumber) => (
+            <tr className="editableTr" key={rowNumber}>
+              {tableRow.map((tableCell, colNumber) => (
+                <td key={colNumber}>
                   <span
                     className={`form-control d-inline-block px-2 ${
                       isEditMode ? "" : "noEdit"
