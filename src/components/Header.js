@@ -19,7 +19,9 @@ function Header(props) {
     return (
       <>
         Currently Viewing: {props.fileName}{" "}
-        <button onClick={handleChangeUploadClick} className="btn btn-primary ms-2 mt-1 mt-md-0">
+        <button
+          onClick={handleChangeUploadClick}
+          className="btn btn-primary ms-2 mt-1 mt-md-0">
           Change File
         </button>
       </>
@@ -40,15 +42,37 @@ function Header(props) {
     );
   };
 
+  const fileHeader = () => {
+    return (
+      <>
+        {isChangeFileMode ? (
+          <CSVinput setFile={setFile} />
+        ) : (
+          <span className="text-center">Currently Viewing: {props.fileName} </span>
+        )}
+        {changeFileBtn()}
+      </>
+    );
+  };
+
+  const changeFileBtn = () => {
+    if (props.fileName) {
+      return (
+        <button
+          className={`btn ms-2 mt-2 mt-md-0 ${
+            isChangeFileMode ? "btn-outline-secondary" : "btn-primary"
+          }`}
+          type="button"
+          onClick={handleChangeUploadClick}>
+          {isChangeFileMode ? "Cancel" : "Change File"}
+        </button>
+      );
+    }
+  };
+
   return (
     <header className="d-flex flex-wrap  justify-content-center justify-content-md-between align-items-center py-2 px-4 bg-light">
-      {props.fileName && !isChangeFileMode ? (
-        validFileHeader()
-      ) : !props.fileName && isChangeFileMode ? (
-        <CSVinput setFile={setFile} />
-      ) : (
-        noFileHeader()
-      )}
+      {fileHeader()}
     </header>
   );
 }

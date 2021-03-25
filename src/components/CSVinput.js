@@ -62,7 +62,7 @@ class CSVinput extends React.Component {
         <div className="row justify-content-between align-items-center">
           <label
             htmlFor="csvInput"
-            className="form-label col-12 col-sm-4 mb-sm-0 text-center">
+            className="form-label col-12 col-md-4 mb-md-0 text-center">
             Upload your CSV file
           </label>
           <div className="input-group col-12 col-md">
