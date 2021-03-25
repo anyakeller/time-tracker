@@ -65,7 +65,7 @@ class CSVinput extends React.Component {
             className="form-label col-12 col-sm-4 mb-sm-0">
             Upload your CSV file
           </label>
-          <div className="input-group has-validation col-12 col-sm">
+          <div className="input-group col-12 col-sm">
             <input
               type="file"
               accept=".csv"
