@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 
-export const TimeHook = (upcomingActivity, delay) => {
-  const [currentRow, setcurrentRow] = useState(null);
+export const TimeHook = (activities) => {
+  const [currentRowIndex, setcurrentRowIndex] = useState(0);
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setcurrentRow(upcomingActivity);
-    }, delay);
+    if (currentRowIndex < activities.length) {
+      const handler = setTimeout(() => {
+        setcurrentRowIndex(currentRowIndex + 1);
+      }, activities[currentRowIndex].delay);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [upcomingActivity, delay]);
+      return () => {
+        clearTimeout(handler);
+      };
+    } else {
+      return;
+    }
+  }, [activities, currentRowIndex]);
 
-  return currentRow;
+  return currentRowIndex;
 };

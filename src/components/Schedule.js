@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import ScheduleTable from "./scheduleTable";
 import { FileContext } from "../FileContext";
-import { TimeHook } from "../TimeHook";
 
 function Schedule() {
-  const currentRow = TimeHook("potato", 5000);
-
-  useEffect(() => {
-    if (currentRow) {
-      console.log(currentRow);
-    }
-  }, [currentRow]);
-
   return (
     <div id="schedule">
       <FileContext.Consumer>
-        {({ data, fileName, setFile }) => {
+        {({ data, fileName, setFile, testData }) => {
           return (
             <>
               <Header fileName={fileName} setFile={setFile} />
@@ -27,8 +18,7 @@ function Schedule() {
                     <h1>{fileName}</h1>
                     <ScheduleTable
                       data={data}
-                      fileName={fileName}
-                      setFile={setFile}
+                      testData={testData}
                     />
                   </>
                 ) : (

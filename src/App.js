@@ -20,7 +20,12 @@ class App extends React.Component {
     this.state = {
       data: null,
       fileName: null,
-      setFile: this.setFile
+      setFile: this.setFile,
+      testData: [
+        { activity: "blah0", delay: 0 },
+        { activity: "blah1", delay: 1000 },
+        { activity: "blah5", delay: 5000 }
+      ]
     };
   }
 
