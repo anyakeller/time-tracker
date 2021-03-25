@@ -32,8 +32,8 @@ function Header(props) {
     if (props.fileName) {
       return (
         <button
-          className={`btn ms-2 mt-2 mt-md-0 ${
-            isChangeFileMode ? "btn-outline-secondary" : "btn-primary"
+          className={`btn ms-2 mt-2 ${
+            isChangeFileMode ? "mt-md-0 btn-outline-secondary" : "mt-sm-0 btn-primary"
           }`}
           type="button"
           onClick={handleChangeUploadClick}>
