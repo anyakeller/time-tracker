@@ -20,8 +20,9 @@ class Clock extends React.Component {
 
   tick() {
     this.setState({
-      date: new Date(),
+      date: new Date()
     });
+    // let [hour, minute, second] = new Date().toLocaleTimeString("en-US").split(/:| /)
   }
 
   render() {

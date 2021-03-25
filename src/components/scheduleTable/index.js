@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import EditableTr from "./EditableTr.js";
-import EditableTd from "./EditableTd.js";
+// import EditableTr from "./EditableTr.js";
+// import EditableTd from "./EditableTd.js";
 import "./style.css";
 
 function ScheduleTable({ data, fileName }) {
@@ -8,7 +8,7 @@ function ScheduleTable({ data, fileName }) {
 
   return (
     <div>
-      <table className="table table-secondary">
+      <table className="table table-hover">
         <thead>
           <tr>
             {data.headers.map((header, index) => (
