@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditableTr from "./EditableTr.js";
+import EditableTd from "./EditableTd.js";
 import "./style.css";
 
 function ScheduleTable({ data, fileName }) {
@@ -17,11 +18,19 @@ function ScheduleTable({ data, fileName }) {
         </thead>
         <tbody>
           {data.tableBody.map((tableRow, index) => (
-            <EditableTr
-              key={index}
-              rowData={tableRow}
-              isEditMode={isEditMode}
-            />
+            <tr className="editableTr">
+              {tableRow.map((tableCell, index) => (
+                <td>
+                  <span
+                    className={`form-control d-inline-block px-2 ${
+                      isEditMode ? "" : "noEdit"
+                    }`}
+                    contentEditable={isEditMode}>
+                    {tableCell}
+                  </span>
+                </td>
+              ))}
+            </tr>
           ))}
           <tr>
             <td colSpan="4">asdfas</td>

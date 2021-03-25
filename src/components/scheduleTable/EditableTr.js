@@ -1,28 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import EditableTd from "./EditableTd.js";
 
-class EditableTr extends React.Component {
-  constructor(props) {
-    super(props);
-    this.originalRowData = props.rowData;
-    this.state = {
-      currentRowData: props.rowData,
-    };
-  }
+function EditableTr(props) {
+  const [currentRowData, setRowData] = useState(props.rowData);
 
-  render() {
-    return (
-      <tr className="editableTr">
-        {this.state.currentRowData.map((tableCell, index) => (
-          <EditableTd
-            key={index}
-            isEditMode={this.props.isEditMode}
-            data={tableCell}
-          />
-        ))}
-      </tr>
-    );
-  }
+  return (
+    <tr className="editableTr">
+      {props.rowData.map((tableCell, index) => (
+        <EditableTd
+          key={index}
+          isEditMode={props.isEditMode}
+          data={tableCell}
+        />
+      ))}
+    </tr>
+  );
 }
 
 export default EditableTr;
