@@ -19,7 +19,7 @@ function Header(props) {
     return (
       <>
         Currently Viewing: {props.fileName}{" "}
-        <button onClick={handleChangeUploadClick} className="btn btn-primary">
+        <button onClick={handleChangeUploadClick} className="btn btn-primary ms-2 mt-1 mt-md-0">
           Change File
         </button>
       </>
@@ -31,7 +31,7 @@ function Header(props) {
       <>
         <CSVinput setFile={setFile} />
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-outline-secondary ms-2 mt-1 mt-md-0"
           type="button"
           onClick={handleChangeUploadClick}>
           Cancel
@@ -41,7 +41,7 @@ function Header(props) {
   };
 
   return (
-    <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
+    <header className="d-flex flex-wrap  justify-content-center justify-content-md-between align-items-center py-2 px-4 bg-light">
       {props.fileName && !isChangeFileMode ? (
         validFileHeader()
       ) : !props.fileName && isChangeFileMode ? (

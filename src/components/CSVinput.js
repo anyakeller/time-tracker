@@ -62,10 +62,10 @@ class CSVinput extends React.Component {
         <div className="row justify-content-between align-items-center">
           <label
             htmlFor="csvInput"
-            className="form-label col-12 col-sm-4 mb-sm-0">
+            className="form-label col-12 col-sm-4 mb-sm-0 text-center">
             Upload your CSV file
           </label>
-          <div className="input-group col-12 col-sm">
+          <div className="input-group col-12 col-md">
             <input
               type="file"
               accept=".csv"
@@ -91,7 +91,7 @@ class CSVinput extends React.Component {
               }`}
               type="submit"
               id="csvInputSubmit">
-              {this.state.isFileValid ? "upload" : "Please choose a csv file"}
+              {this.state.isFileValid ? "upload" : "upload a csv"}
             </button>
           </div>
         </div>

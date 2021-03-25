@@ -8,6 +8,7 @@ function ScheduleTable({ data, testData }) {
   const [isEditMode, toggleEditMode] = useState(false);
   const currentRowIndex = TimeHook(testData);
 
+  // just logs current row
   useEffect(() => {
     if (!testData) {
       return;
