@@ -8,6 +8,7 @@ function Schedule() {
     <div id="schedule">
       <FileContext.Consumer>
         {({ data, fileName, setFile, testData }) => {
+          console.log(data);
           return (
             <>
               <Header fileName={fileName} setFile={setFile} />
@@ -16,10 +17,7 @@ function Schedule() {
                 {fileName && data ? (
                   <>
                     <h1>{fileName}</h1>
-                    <ScheduleTable
-                      data={data}
-                      testData={testData}
-                    />
+                    <ScheduleTable data={data} testData={testData} />
                   </>
                 ) : (
                   <h1>adsfasdf</h1>

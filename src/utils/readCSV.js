@@ -9,7 +9,9 @@ const readCSVFile = (file) => {
         let rows = fileReader.result
           .trim()
           .split("\n")
-          .map((row) => row.split(","));
+          .map((row) => {
+            return row.split(",");
+          });
         res(rows);
       };
       fileReader.readAsText(file);

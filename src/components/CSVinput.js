@@ -23,8 +23,8 @@ class CSVinput extends React.Component {
     if (this.state.isFileValid) {
       console.log("yay");
       // read the csv
-      readCSVFile(this.state.file).then((rows) => {
-        this.props.setFile({ data: rows, fileName: this.state.file.name });
+      readCSVFile(this.state.file).then((data) => {
+        this.props.setFile({ data: data, fileName: this.state.file.name });
       });
     } else {
       console.log("booo");
