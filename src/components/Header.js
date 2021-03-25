@@ -32,8 +32,8 @@ function Header(props) {
     if (props.fileName) {
       return (
         <button
-          className={`btn ms-2 mt-2 ${
-            isChangeFileMode ? "mt-md-0 btn-outline-secondary" : "mt-sm-0 btn-primary"
+          className={`btn ms-2 mt-2 mt-sm-0 ${
+            isChangeFileMode ? "btn-outline-secondary" : "btn-primary"
           }`}
           type="button"
           onClick={handleChangeUploadClick}>
@@ -44,7 +44,7 @@ function Header(props) {
   };
 
   return (
-    <header className="d-flex flex-wrap  justify-content-center justify-content-md-between align-items-center py-2 px-4 bg-light">
+    <header className="d-flex  justify-content-center justify-content-md-between align-items-center py-2 px-4 bg-light">
       {fileHeader()}
     </header>
   );
