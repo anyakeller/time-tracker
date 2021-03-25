@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import CSVinput from "./CSVinput";
 
 function Header(props) {
-  const [isChangeFileMode, toggleChangeFileMode] = useState(false);
+  const [isChangeFileMode, toggleChangeFileMode] = useState(true);
 
   const handleChangeUploadClick = (e) => {
     e.preventDefault();
-    toggleChangeFileMode(true);
+    toggleChangeFileMode(!isChangeFileMode);
     console.log("change file clicked");
   };
 
@@ -25,12 +25,29 @@ function Header(props) {
       </>
     );
   };
+
+  const noFileHeader = () => {
+    return (
+      <>
+        <CSVinput setFile={setFile} />
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          onClick={handleChangeUploadClick}>
+          Cancel
+        </button>
+      </>
+    );
+  };
+
   return (
     <header className="d-flex justify-content-between align-items-center py-2 px-4 bg-light">
       {props.fileName && !isChangeFileMode ? (
         validFileHeader()
-      ) : (
+      ) : !props.fileName && isChangeFileMode ? (
         <CSVinput setFile={setFile} />
+      ) : (
+        noFileHeader()
       )}
     </header>
   );

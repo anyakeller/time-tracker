@@ -66,7 +66,6 @@ class CSVinput extends React.Component {
             Upload your CSV file
           </label>
           <div className="input-group col-12 col-sm">
-          <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Cancel</button>
             <input
               type="file"
               accept=".csv"
