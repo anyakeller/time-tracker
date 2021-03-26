@@ -17,10 +17,22 @@ class App extends React.Component {
         fileName: uploadData.fileName
       }));
     };
+
+    this.updateTimeData = (
+      timeData = [
+        { activity: "blah0", delay: 0 },
+        { activity: "blah1", delay: 1000 },
+        { activity: "blah5", delay: 5000 }
+      ]
+    ) => {
+      this.setState((state) => ({ testData: timeData }));
+    };
+
     this.state = {
       data: null,
       fileName: null,
       setFile: this.setFile,
+      updateTimeData: this.updateTimeData,
       testData: [
         { activity: "blah0", delay: 0 },
         { activity: "blah1", delay: 1000 },

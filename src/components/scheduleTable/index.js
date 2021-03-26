@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 // import EditableTr from "./EditableTr.js";
 // import EditableTd from "./EditableTd.js";
 import "./style.css";
-import { TimeHook } from "../../TimeHook";
+import { useDuration } from "../../useDuration";
 
 function ScheduleTable({ data, testData }) {
   const [isEditMode, toggleEditMode] = useState(false);
-  const currentRowIndex = TimeHook(testData);
+  const currentRowIndex = useDuration(testData);
 
   // just logs current row
   useEffect(() => {

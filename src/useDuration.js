@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 /* ------ Sets currentRowIndex to the current activity based on a timer ----- */
 
-export const TimeHook = (activities) => {
+export const useDuration = (activities) => {
   const [currentRowIndex, setcurrentRowIndex] = useState(0);
 
   useEffect(() => {
